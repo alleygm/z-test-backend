@@ -3,6 +3,7 @@
 namespace App\Form\Security;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -13,32 +14,30 @@ class LoginFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $fieldClasses = "text-center flex flex-col";
-        $inputClasses = "bg-gray-500/25 text-center";
         $builder
-            ->add('username', TextType::class, [
-                'label' => "логин",
+            ->add('email', EmailType::class, [
+                'label' => "email",
                 'row_attr' => [
-                    'class' => $fieldClasses
+                    'class' => ""
                 ],
                 'attr' => [
-                    'placeholder' => "Ваш логин",
-                    'class' => $inputClasses
+                    'placeholder' => "Ваш email",
+                    'class' => ""
                 ],
             ])
             ->add('password', PasswordType::class, [
                 'label' => 'пароль',
                 'row_attr' => [
-                    'class' => $fieldClasses
+                    'class' => ""
                 ],
                 'attr' => [
                     'placeholder' => "Ваш пароль",
-                    'class' => $inputClasses
+                    'class' => ""
                 ],
                 'constraints' => [],
             ])
             ->add('submit', SubmitType::class, [
-                'label' => "Пройти в город",
+                'label' => "войти",
                 'row_attr' => [
                     'class' => 'default-btn'
                 ],

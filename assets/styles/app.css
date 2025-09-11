@@ -3,15 +3,3 @@
 body {
     background-color: skyblue;
 }
-
-
-.default-btn{
-    text-align: center;
-    padding-inline: calc(var(--spacing) * 2);
-    background-color: var(--color-gray-500);
-    align-content: center;
-}
-
-.default-btn:hover{
-    background-color: var(--color-gray-700);
-}

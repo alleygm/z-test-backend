@@ -11,7 +11,6 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-#[IsGranted('IS_AUTHENTICATED_FULLY')]
 class LogInController extends AbstractController
 {
     #[Route(path: '/login', name: 'login')]
@@ -21,7 +20,7 @@ class LogInController extends AbstractController
         $form = $this->createForm(LoginFormType::class);
         
         // Устанавливаем последнее введенное имя пользователя
-        $form->get('username')->setData($authenticationUtils->getLastUsername());
+        $form->get('email')->setData($authenticationUtils->getLastUsername());
 
         return $this->render('/security/login.html.twig', [
             'form' => $form->createView(),
