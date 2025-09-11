@@ -1,0 +1,24 @@
+{% block body %}
+    <turbo-frame id="right-side-frame">
+        <div class="h-screen" {{stimulus_controller('side-frame')}} {{ stimulus_target('side-frame', 'body') }}>
+            <div class="flex justify-between h-1/16 bg-black items-center text-center text-white">
+                <div class="w-1/4 h-auto">*</div>
+                <h1 class="w-2/4 h-auto">Инвентарь</h1>
+                <div class="w-1/4 h-auto" src="" alt="X" {{ stimulus_action('side-frame', 'close', 'click') }}>X</div>
+            </div>
+            <div class="grid grid-cols-5 grid-rows-5 gap-4 h-8/15 bg-gray-950/50 text-white *:border *:border-solid">
+                <div class="row-span-3">main-hand</div>
+                <div class="row-span-3 col-start-3 row-start-2">body</div>
+                <div class="col-start-2 row-start-3">ring</div>
+                <div class="col-start-4 row-start-3">ring</div>
+                <div class="col-start-4 row-start-2">amulet</div>
+                <div class="row-span-3 col-start-5 row-start-1">off-hand</div>
+                <div class="col-start-3 row-start-1">helmet</div>
+                <div class="row-span-2 col-start-4 row-start-4">boots</div>
+                <div class="row-span-2 col-start-2 row-start-4">gloves</div>
+                <div class="col-start-3 row-start-5">belt</div>
+            </div>
+            <div class="h-6/15 bg-black/50"></div>
+        </div>
+    </turbo-frame>
+{% endblock %}

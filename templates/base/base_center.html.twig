@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block background %}
+    <img src="{{ asset('images/security/auth/bg.jpg' )}}" class="absolute w-screen h-screen brightness-50 -z-50"></img>
+{% endblock %}
+
+{% block body %}
+    <div  class="w-full h-full flex flex-col justify-center items-center">
+        <div class="flex flex-col gap-3 w-1/4 h-auto bg-black/50 text-white justify-center p-3">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

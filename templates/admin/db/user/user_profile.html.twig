@@ -1,0 +1,54 @@
+{% extends "admin/index.html.twig" %}
+
+{% block content %}
+    <h1 class="w-full text-center mb-10">Профиль пользователя</h1>
+
+    <turbo-frame id="user-data" class="flex justify-center border-2 border-white w-1/2 items-center self-center mb-10">
+        <div class="grid grid-cols-2 gap-4 p-3 *:flex">
+            <div class="">
+                <span class="font-medium">ID:</span>
+                <span class="ml-2">{{item.id}}</span>
+            </div>
+            <div class="">
+                <span class="font-medium">username:</span>
+                <span class="ml-2">{{item.username}}</span>
+            </div>
+            <div class="">
+                <span class="font-medium">Email:</span>
+                <span class="ml-2">{{item.username}}</span>
+            </div>
+            <div class="">
+                <span class="font-medium">Phone:</span>
+                <span class="ml-2">{{item.username}}</span>
+            </div>
+        </div>
+    </turbo-frame>
+
+    <div class="flex justify-center gap-3 border-2 border-white p-5">
+        <a href="" class="default-btn bg-red-700!"  data-turbo-method="delete" data-turbo-confirm="Вы уверены в своем желании удалить пользователя?">
+            Удалить пользователя
+        </a>
+        <a href="{{path('admin_db_user_edit', {'id': item.id })}}" class="default-btn" data-turbo-frame="user-data">
+            редактировать пользователя
+        </a>
+    </div>
+
+{# footer #}
+    <div class="flex justify-between items-center p-4 border-t border-white text-white text-sm">
+        <div>
+            <div>Запечатлено в летописи:</div>
+            <div class="font-semibold">24.01.2024</div>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <div class="text-right">
+                <div>Великий Магистр данных</div>
+                <div>База Данных</div>
+            </div>
+            <div class="bg-red-900 border-2 border-red-950 w-12 h-12 rounded-full flex items-center justify-center">
+                <span class="text-white text-lg">⚖️</span>
+            </div>
+        </div>
+    </div>
+{# end #}    
+{% endblock %}

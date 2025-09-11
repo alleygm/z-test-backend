@@ -1,0 +1,25 @@
+{% extends "base/base_center.html.twig" %}
+
+{% block background %}
+    <img src="{{ asset('images/hideout/bg.png' )}} " class="absolute w-screen h-screen brightness-50 -z-50"></img>    
+{% endblock %}
+
+{% block content %}
+    <span>Персонажи</span>
+    {{ dump(characters) }}
+    <div {{ stimulus_controller('character--menu', {'defaultUrl' : path('character_menu_select')})}}>
+        <div class="flex flex-col w-full">
+            {% for char in characters %}
+                <span class="text-center p-3 mb-2 border-2 border-white hover:bg-gray-600/50" {{ stimulus_action('character--menu', 'select', 'click') }} data-character-id={{char.id}}>{{char.name}} | {{ char.class.name }} | {{ char.level }}lvl</span>
+            {% endfor %}
+        </div>
+        <div class="flex justify-between">
+            <a href="" {{ stimulus_target('character--menu', 'selectLink') }} class="default-btn">Выбрать</a>   
+            <div  class="flex gap-3">
+                <a href="{{path('character_menu_create')}}" class="default-btn">Создать</a>   
+                <a href="" class="default-btn">Удалить</a> 
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

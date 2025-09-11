@@ -1,0 +1,10 @@
+{% extends 'base/base_center.html.twig' %}
+{% block content %}
+	{{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.password) }}
+        {{ form_row(form.submit) }}
+        <a href="{{path('auth')}}" class="default-btn" data-turbo-action="replace">назад</a>
+	{{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base/base_center.html.twig" %}
+
+{% block content %}
+    <h3>Странник, ты пришёл как гость... или как давно ожидаемый?</h3>
+    <a href="{{path('login')}}" class="default-btn" data-turbo-action="replace">Предъявить печать</a> 
+    <a href="{{path('register')}}" class="default-btn" data-turbo-action="replace">Представить себя</a>    
+{% endblock %}

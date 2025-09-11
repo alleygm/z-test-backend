@@ -1,0 +1,23 @@
+{% extends "base/base_center.html.twig" %}
+
+{% block title %}
+    Создание персонажа
+{% endblock %}
+
+{% block background %}
+    <img src="{{ asset('images/hideout/bg.png' )}} " class="absolute w-screen h-screen brightness-50 -z-50"></img>    
+{% endblock %}
+
+{% block content %}
+    <span>Создание персонажа</span>
+    <div class="flex flex-col">
+        {{ form_start(form)}}
+            {{ form_errors(form)}}
+            {{ form_row(form.name)}}
+            {{ form_row(form.class)}}
+            {{ form_row(form.submit)}}
+        {{ form_end(form)}}
+    </div>
+    <div class="flex justify-between">
+    </div>
+{% endblock %}

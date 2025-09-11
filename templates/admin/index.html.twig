@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Магистрат{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block background %}
+    <img src="{{ asset('images/admin/bg.png') }}" class="absolute w-screen h-screen brightness-50 -z-50"></img>
+{% endblock %}
+
+{% block body %}
+    {{ render(path('admin_nav')) }}
+    
+    <div class="w-full h-full flex justify-center items-center py-8">
+        <div class="flex flex-col w-2/3 mt-2 h-full bg-black/50 text-white">
+            {% block content %}
+                <div class="parchment-bg magistrate-border rounded-lg p-8 shadow-2xl magistrate-text mx-auto my-8 max-w-4xl text-white">
+                    <!-- Печать магистрата -->
+                    <div class="text-center mb-6">
+                        <div class="inline-block seal-icon text-4xl">⚖️</div>
+                        <h1 class="text-3xl font-bold mt-2">Великий Магистрат</h1>
+                    </div>
+
+                    <!-- Приветственное обращение -->
+                    <div class="text-center mb-6">
+                        <p class="text-xl mb-4">
+                            "Да будет свет мудрости с тобой, Магистр {{app.user.username}}!"
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            Ты восседаешь на высоком месте магистра, где каждый твой выбор отзывается 
+                            эхом по всем землям. Твои решения — указы, твои действия — законы, 
+                            твоя мудрость — основа порядка.
+                        </p>
+                    </div>
+
+                    <!-- Наставления магистра -->
+                    <div class="p-4 mb-6">
+                        <h2 class="text-lg font-semibold mb-2">Заповеди Магистра:</h2>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Будь <strong>справедлив</strong> в своих решениях — каждый пользователь заслуживает беспристрастного суда</li>
+                            <li>Храни <strong>мудрость</strong> — прежде чем действовать, взвесь все последствия</li>
+                            <li>Проявляй <strong>милосердие</strong> — там, где можно предупредить, не наказывай</li>
+                            <li>Будь <strong>бдителен</strong> — малейшая ошибка может нарушить хрупкое равновесие системы</li>
+                            <li>Соблюдай <strong>порядок</strong> — ибо хаос начинается с малого</li>
+                        </ul>
+                    </div>
+
+                    <!-- Девиз магистрата -->
+                    <div class="text-center border-t-2 pt-4 mt-6">
+                        <p class="text-lg font-semibold italic">
+                            "Сила — в знании, власть — в ответственности,<br>
+                            величие — в справедливости"
+                        </p>
+                    </div>
+
+                    <!-- Напутствие -->
+                    <div class="text-center mt-8 text-sm">
+                        <p>Пусть твое правление будет мудрым, а решения — справедливыми</p>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}
+

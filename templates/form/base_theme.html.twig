@@ -1,0 +1,14 @@
+{% block form_row %}
+    <div class="flex flex-col mb-4">
+        <div class="text-red-600 text-sm">
+            <pre>
+                {{ dump(form) }}
+            </pre>
+            {{ form_errors(form) }}
+        </div>
+        <div class="text-center mb-2"> 
+            {{ form_label(form) }}  
+        </div>
+        {{ form_widget(form, {'attr': {'class':'bg-black/50 border-2 border-white p-1 text-center'}})  }}
+    </div>
+{% endblock %}
