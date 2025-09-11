@@ -1,0 +1,41 @@
+server {
+    listen 9005;
+    server_name localhost;
+
+    root /var/www/ecoClean/public;
+    index index.php index.html;
+	
+    # Ваш главный location для PHP
+    location ~ ^/index\.php(/|$) {
+        fastcgi_pass unix:/run/php/php8.4-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+
+        internal;
+    }
+
+    # ВМЕСТО НЕГО - сделай вот такой блок:
+    location /assets/ {
+        try_files $uri @asset_mapper;
+    }
+
+    # Если файла в public/assets/ нет - передаем запрос в Symfony
+    location @asset_mapper {
+        rewrite ^/assets/(.*)$ /index.php/assets/$1 last;
+    }
+
+    # Все остальные запросы отправляй в index.php
+    location / {
+        try_files $uri /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        return 404;
+    }
+
+    error_log /var/log/nginx/forgottenInEternity_error.log;
+    access_log /var/log/nginx/forgottenInEternity_access.log;
+}
