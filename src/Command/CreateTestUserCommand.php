@@ -10,11 +10,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[AsCommand(name: 'app:user:create-test')]
+/**
+ * Создание тестового пользователя в БД
+ */
 class CreateTestUserCommand
 {
     public function __construct(private UserPasswordHasherInterface $userPasswordHasher, private EntityManagerInterface $entityManager) {
     }
-    public function __invoke(OutputInterface $output, ): int
+    public function __invoke(OutputInterface $output): int
     {
 
         $user = new User();

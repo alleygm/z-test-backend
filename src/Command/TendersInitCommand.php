@@ -17,6 +17,9 @@ use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\SerializerInterface;
 
 #[AsCommand(name: 'app:tenders:init')]
+/**
+ * Заполнение бд тестовыми данными
+ */
 class TendersInitCommand
 {
     private $filePath = "";
@@ -25,7 +28,7 @@ class TendersInitCommand
         $projectDir     = $cbi->get('project_dir');
         $this->filePath = $projectDir . '/test_task_data.csv';
     }
-    public function __invoke(OutputInterface $output): int
+    public function __invoke(): int
     {
         try {
             $data = $this->serializer->decode(file_get_contents($this->filePath), 'csv');
