@@ -50,7 +50,6 @@ trait EntityDateStampTrait
     }
 
     #[ORM\PreUpdate]
-    #[ORM\PrePersist]
     public function setUpdatedAtValue(): void
     {
         $this->updatedAt = new DateTimeImmutable();
