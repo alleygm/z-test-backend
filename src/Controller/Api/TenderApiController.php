@@ -169,23 +169,14 @@ class TenderApiController extends AbstractController
                 $qb->andWhere('t.updatedAt = :date')
                     ->setParameter('date', $dateObj->format('Y-m-d H:i:s'));
             }
-
-            // Добавляем пагинацию
+            
             $qb->setFirstResult($offset)
-                ->setMaxResults($limit)
-                ->orderBy('t.id', 'DESC');
+                ->setMaxResults($limit);
 
             $list = $qb->getQuery()->getResult();
 
             // Формирование ответа
-            $result = array_map(fn(Tender $t) => [
-                'id'           => $t->getId(),
-                'externalCode' => $t->getExternalCode(),
-                'number'       => $t->getNumber(),
-                'name'         => $t->getName(),
-                'status'       => $t->getStatus()->getName(),
-                'updatedAt'    => $t->getUpdatedAt()->format('Y-m-d H:i:s'),
-            ], $list);
+            $result = array_map(fn(Tender $t) => $this->serializer->normalize($t), $list);
 
             return $this->json(
                 [
@@ -196,11 +187,8 @@ class TenderApiController extends AbstractController
                 context: $this->context
             );
 
-        } catch (\Throwable $e) {
-            return $this->json([
-                'error'   => 'Internal server error',
-                'message' => $e->getMessage(),
-            ], 500);
+        } catch (\Throwable $th) {
+            return $this->json($th->getMessage(), 400);
         }
     }
 
