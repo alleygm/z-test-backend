@@ -16,7 +16,7 @@ COPY . .
 
 RUN composer install --no-interaction --no-progress
 
-RUN chown -R www-data:www-data var/ public/
+RUN php bin/console lexik:jwt:generate-keypair --overwrite
 
 COPY docker/php/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
